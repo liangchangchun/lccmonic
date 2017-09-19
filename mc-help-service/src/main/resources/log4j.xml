@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+    <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!--#log4j中有5级logger ,#FATAL 0 ,#ERROR 3 ,#WARN 4 ,#INFO 6 ,#DEBUG 7 -->
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+		<!-- 控制台 -->
+      <appender name="APPENDER.STDOUT" class="org.apache.log4j.ConsoleAppender">  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"    
+                value="%d %-5p [%t] %l - %m%n" /> 
+        </layout>  
+    </appender> 
+   
+	
+	<appender name="APPENDER.HMC_USER" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="/var/logs/service/user/user.log" />
+		<param name="DatePattern" value="'_'yyyy-MM-dd'.log'" /> 
+		<layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"    
+                value="%d %-5p [%t] %l - %m%n" /> 
+        </layout>  
+	</appender>
+		<!-- error 日志剥离 -->
+	<appender name="APPENDER.HMC_USER_ERROR" class="org.apache.log4j.DailyRollingFileAppender">
+    	<param name="Threshold" value="error"></param>  
+		<param name="File" value="/var/logs/service/user/user_error.log" />
+		<param name="DatePattern" value="'_'yyyy-MM-dd'.log'" /> 
+		<layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern"    
+                value="%d %-5p [%t] %l - %m%n" /> 
+        </layout>  
+	</appender>
+   <!-- hmc facade log -->
+    <logger name="LOGGER.HMC_USER" additivity="false">  
+        <appender-ref ref="APPENDER.HMC_USER"/>  
+    </logger>  
+	  <!-- 根logger的设置 --> 
+    <root>  
+        <priority value ="info"/>  
+        <appender-ref ref="APPENDER.STDOUT" />
+        <appender-ref ref="APPENDER.HMC_USER" />
+        <appender-ref ref="APPENDER.HMC_USER_ERROR" />
+    </root> 
+</log4j:configuration>  

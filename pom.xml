@@ -1,0 +1,821 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>xuanyan.parent</groupId>
+  <artifactId>hmc-parent</artifactId>
+  <version>${JAVA_ENV}-0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>hmc-parent</name>
+  <description>hmc-parent</description>
+  <!-- 全局属性配置 
+	<profiles>
+		<profile>
+			<id>develop</id>
+			<properties>
+				<JAVA_ENV>develop</JAVA_ENV>
+				<maven.test.skip>false</maven.test.skip>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation> 
+		</profile>
+	</profiles>-->
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>${hmc-repository-url}</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>${hmc-snapshotRepository-url}</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<properties>
+		<compiler.version>1.8</compiler.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- 环境变量 develop | integration-->
+		<JAVA_ENV>integration</JAVA_ENV>
+		<hmc-repository-url>http://10.0.0.10:8081/content/repositories/releases/</hmc-repository-url>
+		<hmc-snapshotRepository-url>http://10.0.0.10:8081/content/repositories/snapshots/</hmc-snapshotRepository-url>
+		
+		<!-- ========================================================== -->
+		<hmc-midware.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-midware.version>
+		<!-- 好买车4.0项目版本号 begin -->
+		<!-- common projects -->
+		<hmc-common.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-common.version>
+		<!--  
+		<hmc-common-config.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-common-config.version>-->
+		<!-- SOA  facade  -->
+		<hmc-public-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-public-facade.version>
+		<hmc-activity-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-activity-facade.version>
+		<hmc-user-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-user-facade.version>
+		<hmc-ware-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-ware-facade.version>
+		<hmc-trade-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-trade-facade.version>
+		<hmc-merchant-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-merchant-facade.version>
+		<hmc-report-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-report-facade.version>
+		<hmc-openlab-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-openlab-facade.version>
+		<hmc-help-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-help-facade.version>
+		<hmc-cloud-facade.version>${JAVA_ENV}-0.0.1-SNAPSHOT</hmc-cloud-facade.version>
+		<!-- SOA service -->
+		<hmc-public-service.version>0.0.1-SNAPSHOT</hmc-public-service.version>
+		<hmc-activity-service.version>0.0.1-SNAPSHOT</hmc-activity-service.version>
+		<hmc-user-service.version>0.0.1-SNAPSHOT</hmc-user-service.version>
+		<hmc-ware-service.version>0.0.1-SNAPSHOT</hmc-ware-service.version>
+		<hmc-trade-service.version>0.0.1-SNAPSHOT</hmc-trade-service.version>
+		<hmc-merchant-service.version>0.0.1-SNAPSHOT</hmc-merchant-service.version>
+		<hmc-report-service.version>0.0.1-SNAPSHOT</hmc-report-service.version>
+		<hmc-openlab-service.version>0.0.1-SNAPSHOT</hmc-openlab-service.version>
+		<hmc-help-service.version>0.0.1-SNAPSHOT</hmc-help-service.version>
+		<hmc-cloud-service.version>0.0.1-SNAPSHOT</hmc-cloud-service.version>
+		<!-- web projects -->
+		<hmc-web-api.version>0.0.1-SNAPSHOT</hmc-web-api.version>
+		<hmc-web-mps.version>0.0.1-SNAPSHOT</hmc-web-mps.version>
+		<hmc-web-oms.version>0.0.1-SNAPSHOT</hmc-web-oms.version>
+		<hmc-web-portal.version>0.0.1-SNAPSHOT</hmc-web-portal.version>
+		<!-- frameworks -->
+		<org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+		<spring-data-redis.version>1.8.3.RELEASE</spring-data-redis.version>
+		
+		<!-- spring 版本 <org.springframework.version>3.2.4.RELEASE</org.springframework.version> -->
+		<mybatis.version>3.3.0</mybatis.version>
+		<!--
+		<dubbo.version>2.5.3</dubbo.version>
+		<dubbo.version>2.8.4</dubbo.version> 
+		-->
+		<dubbo.version>2.5.4-SNAPSHOT</dubbo.version>
+		<!-- 短信 -->
+		<com.alibaba.sms.version>1.0.0</com.alibaba.sms.version>
+		<!-- ping++ 支付 -->
+		<pingpp-java.version>2.1.1</pingpp-java.version>
+		<!-- jpush -->
+		<jpush-client.version>3.2.7</jpush-client.version>
+		<!-- hgj -->
+		<hgj.version>0.0.1-SNAPSHOT</hgj.version>
+		<!-- dsc -->
+		<dsc.version>0.0.1-SNAPSHOT</dsc.version>
+		<!-- influxdb -->
+		<influxdb.version>2.3</influxdb.version>
+		
+		<hgj-crawler.version>0.0.1-SNAPSHOT</hgj-crawler.version>
+		
+		<okhttp3.version>3.7.0</okhttp3.version>
+		<guava.version>19.0</guava.version>
+	</properties>
+
+
+	<dependencies>
+		<!-- Test Dependency Begin -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+		
+			<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Test Dependency End -->
+	</dependencies>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- hmc midware begin -->
+			<dependency>
+				<groupId>com.xuanyan.hmc.midware.assist</groupId>
+			    <artifactId>hmc-midware-assist</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>	
+				<dependency>
+				<groupId>com.xuanyan.hmc.midware.config</groupId>
+			    <artifactId>hmc-midware-config</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+				<dependency>
+				<groupId>com.xuanyan.hmc.midware.log</groupId>
+			    <artifactId>hmc-midware-log</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+				<dependency>
+				<groupId>com.xuanyan.hmc.midware.memcached</groupId>
+			    <artifactId>hmc-midware-memcached</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>		
+			<dependency>
+				<groupId>com.xuanyan.hmc.midware.mail</groupId>
+			    <artifactId>hmc-midware-mail</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xuanyan.hmc.midware.mongo</groupId>
+			    <artifactId>hmc-midware-mongo</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+   			 <dependency>
+				<groupId>com.xuanyan.hmc.midware.MQ</groupId>
+			    <artifactId>hmc-midware-MQ</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xuanyan.hmc.midware.redis</groupId>
+			    <artifactId>hmc-midware-redis</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xuanyan.hmc.midware.zookeeper</groupId>
+			    <artifactId>hmc-midware-zookeeper</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xuanyan.hmc.midware.hadoop</groupId>
+			    <artifactId>hmc-midware-hadoop</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xuanyan.hmc.midware.rdb</groupId>
+			    <artifactId>hmc-midware-rdb</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xuanyan.hmc.midware.httpClient</groupId>
+			    <artifactId>hmc-midware-httpClient</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xuanyan.hmc.midware.hive</groupId>
+			    <artifactId>hmc-midware-hive</artifactId>
+			    <version>${hmc-midware.version}</version>
+			</dependency>
+			<!-- hmc midware end -->
+		
+		
+		<!-- hmc facade begin -->
+		<dependency>
+			<groupId>com.xuanyan.hmc.activity.facade</groupId>
+			<artifactId>hmc-activity-facade</artifactId>
+			<version>${hmc-activity-facade.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xuanyan.hmc.ware.facade</groupId>
+			<artifactId>hmc-ware-facade</artifactId>
+			<version>${hmc-ware-facade.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xuanyan.hmc.user.facade</groupId>
+			<artifactId>hmc-user-facade</artifactId>
+			<version>${hmc-user-facade.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xuanyan.hmc.trade.facade</groupId>
+			<artifactId>hmc-trade-facade</artifactId>
+			<version>${hmc-trade-facade.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.xuanyan.hmc.report.facade</groupId>
+			<artifactId>hmc-report-facade</artifactId>
+			<version>${hmc-report-facade.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.xuanyan.hmc.public.facade</groupId>
+			<artifactId>hmc-public-facade</artifactId>
+			<version>${hmc-public-facade.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.xuanyan.hmc.merchant.facade</groupId>
+			<artifactId>hmc-merchant-facade</artifactId>
+			<version>${hmc-merchant-facade.version}</version>
+		</dependency>
+		<!-- 测试接口openlab，后期可以去掉 -->
+		<dependency>
+			<groupId>com.xuanyan.hmc.openlab.facade</groupId>
+			<artifactId>hmc-openlab-facade</artifactId>
+			<version>${hmc-openlab-facade.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xuanyan.hmc.help.facade</groupId>
+			<artifactId>hmc-help-facade</artifactId>
+			<version>${hmc-help-facade.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.xuanyan.hmc.cloud.facade</groupId>
+			<artifactId>hmc-cloud-facade</artifactId>
+			<version>${hmc-cloud-facade.version}</version>
+		</dependency>
+		<!-- hmc facade end -->
+		
+		   <dependency>
+		      <groupId>com.xuanyan.hmc.crawler</groupId>
+		      <artifactId>hgj-crawler</artifactId>
+    		<version>${hgj-crawler.version}</version>
+		    </dependency>
+		    
+		    <!-- okhttp3  -->
+		    <dependency>
+		    	<groupId>com.squareup.okhttp3</groupId>
+		    	<artifactId>okhttp</artifactId>
+		    	<version>${okhttp3.version}</version>
+			</dependency>
+
+			<!-- Common Dependency Begin -->
+			<dependency>
+				<groupId>antlr</groupId>
+				<artifactId>antlr</artifactId>
+				<version>2.7.6</version>
+			</dependency>
+			<dependency>
+				<groupId>aopalliance</groupId>
+				<artifactId>aopalliance</artifactId>
+				<version>1.0</version>
+			</dependency>
+			<dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.8.9</version>
+        </dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.8.9</version>
+			</dependency>
+			<!-- <dependency> -->
+			<!-- <groupId>cglib</groupId> -->
+			<!-- <artifactId>cglib-nodep</artifactId> -->
+			<!-- <version>2.2.2</version> -->
+			<!-- </dependency> -->
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>2.2.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>asm</groupId>
+				<artifactId>asm</artifactId>
+				<version>3.3.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sf.json-lib</groupId>
+				<artifactId>json-lib</artifactId>
+				<version>2.3</version>
+				<classifier>jdk15</classifier>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-core-asl</artifactId>
+				<version>1.9.13</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>1.9.13</version>
+			</dependency>
+			<dependency>
+				<groupId>ognl</groupId>
+				<artifactId>ognl</artifactId>
+				<version>3.0.6</version>
+			</dependency>
+			<dependency>
+				<groupId>oro</groupId>
+				<artifactId>oro</artifactId>
+				<version>2.0.8</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.8.0</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.8</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-digester</groupId>
+				<artifactId>commons-digester</artifactId>
+				<version>2.0</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.5</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.1.3</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-validator</groupId>
+				<artifactId>commons-validator</artifactId>
+				<version>1.1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-cli</groupId>
+				<artifactId>commons-cli</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.ezmorph</groupId>
+				<artifactId>ezmorph</artifactId>
+				<version>1.0.6</version>
+			</dependency>
+			<dependency>
+				<groupId>javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.12.1.GA</version>
+			</dependency>
+			<dependency>
+				<groupId>jstl</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>jta</artifactId>
+				<version>1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.5</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.7.5</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.jexcelapi</groupId>
+				<artifactId>jxl</artifactId>
+				<version>2.6.12</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba.external</groupId>
+				<artifactId>sourceforge.spring</artifactId>
+				<version>2.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba.external</groupId>
+				<artifactId>jakarta.commons.poolg</artifactId>
+				<version>1.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jdom</groupId>
+				<artifactId>jdom</artifactId>
+				<version>1.1.3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
+			<!-- <dependency> <groupId>redis.clients</groupId> <artifactId>jedis</artifactId> 
+				<version>2.4.2</version> </dependency> -->
+			<!-- Common Dependency End -->
+
+			<!-- Zookeeper 用于分布式服务管理 -->
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>3.4.5</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.101tec</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>0.3</version>
+			</dependency>
+			<!-- Zookeeper 用于分布式服务管理 end -->
+			<!-- influxdb-java-client -->
+				<dependency>
+				    <groupId>org.influxdb</groupId>
+				    <artifactId>influxdb-java</artifactId>
+				    <version>${influxdb.version}</version>
+				</dependency>
+			<!-- Spring Dependency Begin -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-instrument</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-instrument-tomcat</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-oxm</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-struts</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${org.springframework.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc-portlet</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			
+			<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-redis</artifactId>
+		    <version>${spring-data-redis.version}</version>
+		</dependency>
+			<!-- Spring Dependency End -->
+
+			<!-- MyBatis Dependency Begin -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.2.0</version>
+			</dependency>
+			<!-- MyBatis Dependency End -->
+
+			<!-- Mysql Driver Begin -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.32</version>
+			</dependency>
+			<!-- Mysql Driver End -->
+
+
+			<!-- Others Begin -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+			<dependency>
+				<groupId>google.code</groupId>
+				<artifactId>kaptcha</artifactId>
+				<version>2.3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tomcat</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>6.0.37</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tomcat</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>6.0.37</version>
+			</dependency>
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>2.3.19</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>0.2.23</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.15</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.3.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.netty</groupId>
+				<artifactId>netty</artifactId>
+				<version>3.2.5.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-all</artifactId>
+				<version>5.8.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-pool</artifactId>
+				<version>5.8.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jsoup</groupId>
+				<artifactId>jsoup</artifactId>
+				<version>1.7.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.csource</groupId>
+				<artifactId>fastdfs_client</artifactId>
+				<version>1.24</version>
+			</dependency>
+			<!-- <dependency> <groupId>quartz</groupId> <artifactId>quartz</artifactId> 
+				<version>1.5.2</version> </dependency> -->
+			<!-- Others End -->
+
+			<!-- JPOS Begin -->
+			<dependency>
+				<groupId>org.jpos</groupId>
+				<artifactId>jpos</artifactId>
+				<version>1.9.8</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.core</artifactId>
+				<version>4.3.1</version>
+			</dependency>
+			<!-- JPOS End -->
+			<!-- sms -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>com.alibaba.sms</artifactId>
+				<version>${com.alibaba.sms.version}</version>
+			</dependency>
+			<!-- ping++ -->
+			<dependency>
+	            <groupId>Pingplusplus</groupId>
+	            <artifactId>pingpp-java</artifactId>
+	            <version>${pingpp-java.version}</version>
+	            <type>jar</type>
+	        </dependency>
+			<!--jpush-->
+			<dependency>
+				<groupId>cn.jpush.api</groupId>
+				<artifactId>jpush-client</artifactId>
+				<version>${jpush-client.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>slf4j-api</artifactId>
+						<groupId>org.slf4j</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			
+			<dependency>
+				    <groupId>com.google.guava</groupId>
+				    <artifactId>guava</artifactId>
+				    <version>${guava.version}</version>
+			</dependency>
+		</dependencies>
+		
+
+	</dependencyManagement>
+
+
+	<build>
+		<!-- 定义plugin插件 -->
+		<pluginManagement>
+			<plugins>
+				<!-- 编译 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<failOnError>true</failOnError>
+						<verbose>true</verbose>
+						<fork>true</fork>
+						<compilerArgument>-nowarn</compilerArgument>
+						<source>${compiler.version}</source>
+						<target>${compiler.version}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- 打包时忽略测试目录 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.18.1</version>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.8</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<uniqueVersion>false</uniqueVersion>
+					</configuration>
+				</plugin>
+				
+				
+				<!-- 打包jar文件时，配置manifest文件，加入lib包的jar依赖 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<classesDirectory>target/classes/</classesDirectory>
+					<archive>
+						<manifest>
+							<mainClass>com.alibaba.dubbo.container.Main</mainClass>
+							<useUniqueVersions>false</useUniqueVersions>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>.</Class-Path>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>-->
+			</plugins>
+		</pluginManagement>
+		<!-- 公共的plugin插件 -->
+		<plugins>
+					<!-- 指定打包时的编码和JDK版本 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<!-- 打包时忽略测试目录 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+  
+  
+</project>

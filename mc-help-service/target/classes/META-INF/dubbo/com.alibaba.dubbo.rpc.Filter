@@ -1,0 +1,1 @@
+exceptionHandlerFilter=com.common.base.filter.dubbo.ExceptionHandlerFilter
